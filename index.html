@@ -921,6 +921,8 @@
 
 </x-dc>
 <script>
+class DCLogic {}
+
 class Component extends DCLogic {
   componentDidMount() {
     // ── Nav scroll shadow ──
@@ -1053,6 +1055,8 @@ class Component extends DCLogic {
   }
 }
 
+
+try{new Component().componentDidMount();}catch(e){console.error(e);}
 </script>
 
 
