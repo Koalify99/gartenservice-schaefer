@@ -370,23 +370,29 @@
     @keyframes gsPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.7} }
     @keyframes gsFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
     /* Layout responsive overrides */
+    @media(max-width:980px){
+      .gs-pricing-grid { grid-template-columns: 1fr !important; max-width: 440px; margin-left: auto; margin-right: auto; }
+    }
     @media(max-width:900px){
-      .gs-hero-grid { grid-template-columns: 1fr !important; }
-      .gs-hero-vis { display: none !important; }
-      .gs-pricing-grid { grid-template-columns: 1fr !important; }
+      .gs-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .gs-why-grid { grid-template-columns: 1fr !important; gap: 44px !important; }
+      .gs-area-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     }
     @media(max-width:768px){
-      .gs-why-grid { grid-template-columns: 1fr !important; }
-      .gs-area-grid { grid-template-columns: 1fr !important; }
-      .gs-map-ph { display: none !important; }
+      #abo, #einzel, #ueber-mich, #servicegebiet, #buchen { padding-top: 64px !important; padding-bottom: 64px !important; }
       .gs-form-row { grid-template-columns: 1fr !important; }
       .gs-channels { grid-template-columns: 1fr 1fr !important; }
-      .gs-footer-grid { grid-template-columns: 1fr !important; }
+      .gs-footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
       .gs-pay-opts { grid-template-columns: 1fr !important; }
-      .gs-form-card { padding: 28px 20px !important; }
+      .gs-form-card { padding: 28px 22px !important; }
+      .gs-map-ph { min-height: 240px !important; }
+    }
+    @media(max-width:600px){
+      .gs-hero-vis { display: none !important; }
     }
     @media(max-width:520px){
       .gs-hero-actions { flex-direction: column !important; }
+      .gs-hero-actions > a { justify-content: center; }
       .gs-channels { grid-template-columns: 1fr !important; }
     }
     /* Form controls */
@@ -412,16 +418,23 @@
     .gs-legal p, .gs-legal li { font: 400 .9rem/1.8 'Inter', sans-serif; color: #6b7280; }
     .gs-legal ul { padding-left: 20px; margin-bottom: 12px; }
     .gs-legal a { color: #16a34a; }
+    /* Accessibility floor */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, label:focus-visible {
+      outline: 2px solid #16a34a; outline-offset: 2px; border-radius: 8px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
   </style>
 
 
 </helmet>
 
 <!-- ═══════ NAV ═══════ -->
-<nav id="gs-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e5e7eb;transition:box-shadow .3s;">
+<nav id="gs-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid #e5e7eb;transition:box-shadow .3s;">
   <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px;">
     <a href="#" style="display:flex;align-items:center;gap:12px;font:800 1.1rem 'Inter',sans-serif;color:#14532d;">
-      <span style="font-size:1.5rem;">🌿</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
       <span>Gartenservice Schäfer</span>
     </a>
     <div id="gs-nav-links" style="display:flex;gap:28px;align-items:center;">
@@ -459,7 +472,7 @@
           Mit dem Pflege-Abo von Gartenservice Schäfer ist Ihr Garten das ganze Jahr in Form: feste Termine, individueller Monatspreis, kein Aufwand für Sie. Im Raum Haiger, Dillenburg und Siegen.
         </p>
         <div class="gs-hero-actions" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;">
-          <a href="#abo" style="display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font:700 1rem 'Inter',sans-serif;color:#0c3318;background:#4ade80;box-shadow:0 4px 20px rgba(74,222,128,.35);">🌿 Abo-Pakete ansehen</a>
+          <a href="#abo" style="display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font:700 1rem 'Inter',sans-serif;color:#0c3318;background:#4ade80;box-shadow:0 4px 20px rgba(74,222,128,.35);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M3 21h18"/><path d="M7 21c-1-4-2-6-3-8"/><path d="M7 21c0-5 .5-8 2-11"/><path d="M12 21c-1-4-1-8 .5-12"/><path d="M12 21c1-4 2-7 4-9"/><path d="M17 21c0-3 .5-5 2-7"/></svg>Abo-Pakete ansehen</a>
           <a href="#einzel" style="display:inline-flex;align-items:center;padding:15px 32px;border-radius:50px;font:600 1rem 'Inter',sans-serif;color:#fff;border:2px solid rgba(255,255,255,.28);">Lieber einmalig?</a>
         </div>
         <div style="display:flex;gap:26px;flex-wrap:wrap;">
@@ -471,22 +484,22 @@
       <!-- Right: visual card -->
       <div class="gs-hero-vis" style="display:flex;justify-content:center;align-items:center;position:relative;">
         <div style="background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,.32);padding:40px;width:100%;max-width:380px;">
-          <div style="width:54px;height:54px;background:linear-gradient(135deg,#14532d,#22c55e);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px;">🌱</div>
+          <div style="width:54px;height:54px;background:linear-gradient(135deg,#14532d,#22c55e);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:#fff;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8Z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2Z"/></svg></div>
           <h3 style="font:700 1.2rem 'Inter',sans-serif;color:#111827;margin-bottom:8px;">Einmal einrichten, immer gepflegt</h3>
           <p style="font:400 .88rem/1.6 'Inter',sans-serif;color:#6b7280;margin-bottom:22px;">Ihr Abo übernimmt Rasen, Hecke, Gehölze und Saisonarbeit. Verlässliche Termine, klarer Preis.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            <span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;">🌿 Rasenmähen</span>
-            <span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;">✂️ Heckenschnitt</span>
-            <span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;">🌳 Büsche &amp; Gehölze</span>
-            <span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;">🍂 Gartenreinigung</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M3 21h18"/><path d="M7 21c-1-4-2-6-3-8"/><path d="M7 21c0-5 .5-8 2-11"/><path d="M12 21c-1-4-1-8 .5-12"/><path d="M12 21c1-4 2-7 4-9"/><path d="M17 21c0-3 .5-5 2-7"/></svg>Rasenmähen</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Heckenschnitt</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></svg>Büsche &amp; Gehölze</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:6px 14px;border-radius:50px;font:600 .8rem 'Inter',sans-serif;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M16.5 4.5 19.5 7.5"/><path d="M18 6 9.8 14.2"/><path d="M9.8 14.2 4.2 19 7.6 22 13.2 17.6 9.8 14.2Z"/><path d="M5.6 17.6 8.2 20.4 M7.3 16 9.9 18.8 M9 14.6 11.5 17.3"/></svg>Gartenreinigung</span>
           </div>
         </div>
-        <div style="position:absolute;top:-14px;right:-14px;background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.14);padding:12px 16px;display:flex;align-items:center;gap:10px;font:600 .82rem 'Inter',sans-serif;border:1px solid #f3f4f6;animation:gsFloat 4s ease-in-out infinite;">
-          <span style="font-size:1.2rem;">🔄</span>
+        <div style="position:absolute;top:-14px;right:-14px;background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.14);padding:12px 16px;display:flex;align-items:center;gap:10px;font:600 .82rem 'Inter',sans-serif;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.72)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:gsFloat 4s ease-in-out infinite;">
+          <span style="display:flex;flex-shrink:0;color:#16a34a;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span>
           <div><div style="color:#111827;">Pflege-Abo</div><div style="color:#9ca3af;font-weight:400;font-size:.74rem;">Preis nach Gartengröße</div></div>
         </div>
-        <div style="position:absolute;bottom:-14px;left:-14px;background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.14);padding:12px 16px;display:flex;align-items:center;gap:10px;font:600 .82rem 'Inter',sans-serif;border:1px solid #f3f4f6;animation:gsFloat 4s ease-in-out 2s infinite;">
-          <span style="font-size:1.2rem;">📅</span>
+        <div style="position:absolute;bottom:-14px;left:-14px;background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.14);padding:12px 16px;display:flex;align-items:center;gap:10px;font:600 .82rem 'Inter',sans-serif;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.72)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:gsFloat 4s ease-in-out 2s infinite;">
+          <span style="display:flex;flex-shrink:0;color:#16a34a;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
           <div><div style="color:#111827;">Schnelle Termine</div><div style="color:#9ca3af;font-weight:400;font-size:.74rem;">Innerhalb weniger Tage</div></div>
         </div>
       </div>
@@ -508,7 +521,7 @@
       <div class="gs-price-card" style="background:#fff;border:1.5px solid #e5e7eb;border-radius:24px;padding:36px 30px;display:flex;flex-direction:column;">
         <div style="font:800 22px 'Inter',sans-serif;color:#111827;margin-bottom:6px;">Basis</div>
         <div style="font:400 14px 'Inter',sans-serif;color:#9ca3af;margin-bottom:20px;">Gepflegter Rasen, automatisch</div>
-        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;font:600 13px 'Inter',sans-serif;color:#15803d;text-align:center;margin-bottom:24px;">💬 Preis individuell nach Gartengröße</div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;font:600 13px 'Inter',sans-serif;color:#15803d;text-align:center;margin-bottom:24px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:6px;" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.59a2.43 2.43 0 0 0 0-3.41z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>Preis individuell nach Gartengröße</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;flex:1;">
           <div style="display:flex;align-items:flex-start;gap:10px;font:500 14px/1.5 'Inter',sans-serif;color:#374151;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">✓</span>Rasen mähen alle 2 Wochen (Saison)</div>
           <div style="display:flex;align-items:flex-start;gap:10px;font:500 14px/1.5 'Inter',sans-serif;color:#374151;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">✓</span>Sauberer Kantenschnitt</div>
@@ -520,10 +533,10 @@
 
       <!-- Komfort (featured) -->
       <div class="gs-price-card" style="background:linear-gradient(155deg,#0c3318 0%,#14532d 60%,#166534 100%);border-radius:24px;padding:36px 30px;position:relative;display:flex;flex-direction:column;box-shadow:0 12px 48px rgba(12,51,24,.4);">
-        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#22c55e;color:#fff;font:700 11px 'Inter',sans-serif;padding:5px 20px;border-radius:50px;white-space:nowrap;">★ Beliebteste Wahl</div>
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#22c55e;color:#fff;font:700 11px 'Inter',sans-serif;padding:5px 20px;border-radius:50px;white-space:nowrap;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff" stroke="none" style="vertical-align:-0.12em;margin-right:6px;" aria-hidden="true"><path d="M12 2.5l2.7 5.47 6.04.88-4.37 4.26 1.03 6.01L12 16.3l-5.4 2.84 1.03-6.01L3.26 8.85l6.04-.88z" fill="currentColor" stroke="none"/></svg>Beliebteste Wahl</div>
         <div style="font:800 22px 'Inter',sans-serif;color:#fff;margin-bottom:6px;">Komfort</div>
         <div style="font:400 14px 'Inter',sans-serif;color:rgba(255,255,255,.5);margin-bottom:20px;">Das Rundum-Sorglos-Paket</div>
-        <div style="background:rgba(74,222,128,.18);border:1px solid rgba(74,222,128,.28);border-radius:12px;padding:12px 16px;font:600 13px 'Inter',sans-serif;color:#4ade80;text-align:center;margin-bottom:24px;">💬 Preis individuell nach Gartengröße</div>
+        <div style="background:rgba(74,222,128,.18);border:1px solid rgba(74,222,128,.28);border-radius:12px;padding:12px 16px;font:600 13px 'Inter',sans-serif;color:#4ade80;text-align:center;margin-bottom:24px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:6px;" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.59a2.43 2.43 0 0 0 0-3.41z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>Preis individuell nach Gartengröße</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;flex:1;">
           <div style="display:flex;align-items:flex-start;gap:10px;font:500 14px/1.5 'Inter',sans-serif;color:rgba(255,255,255,.88);"><span style="color:#4ade80;font-weight:700;flex-shrink:0;">✓</span>Rasen mähen alle 2 Wochen (Saison)</div>
           <div style="display:flex;align-items:flex-start;gap:10px;font:500 14px/1.5 'Inter',sans-serif;color:rgba(255,255,255,.88);"><span style="color:#4ade80;font-weight:700;flex-shrink:0;">✓</span>Kanten- &amp; Wegepflege</div>
@@ -538,7 +551,7 @@
       <div class="gs-price-card" style="background:#fff;border:1.5px solid #e5e7eb;border-radius:24px;padding:36px 30px;display:flex;flex-direction:column;">
         <div style="font:800 22px 'Inter',sans-serif;color:#111827;margin-bottom:6px;">Premium</div>
         <div style="font:400 14px 'Inter',sans-serif;color:#9ca3af;margin-bottom:20px;">Komplette Pflege, ganzjährig</div>
-        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;font:600 13px 'Inter',sans-serif;color:#15803d;text-align:center;margin-bottom:24px;">💬 Preis individuell nach Gartengröße</div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 16px;font:600 13px 'Inter',sans-serif;color:#15803d;text-align:center;margin-bottom:24px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:6px;" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.59a2.43 2.43 0 0 0 0-3.41z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>Preis individuell nach Gartengröße</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;flex:1;">
           <div style="display:flex;align-items:flex-start;gap:10px;font:500 14px/1.5 'Inter',sans-serif;color:#374151;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">✓</span>Alles aus dem Komfort-Paket</div>
           <div style="display:flex;align-items:flex-start;gap:10px;font:500 14px/1.5 'Inter',sans-serif;color:#374151;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">✓</span>Büsche &amp; Gehölze formen</div>
@@ -552,7 +565,7 @@
 
     </div>
     <p style="text-align:center;margin-top:36px;font:500 .9rem 'Inter',sans-serif;color:#9ca3af;">
-      🔄 Alle Abos monatlich kündbar · 📋 Klares Angebot vorab · 💬 Unsicher? Einfach unverbindlich anfragen.
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:5px;" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>Alle Abos monatlich kündbar · <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin:0 5px 0 4px;" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.59a2.43 2.43 0 0 0 0-3.41z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>Klares Angebot vorab · <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin:0 5px 0 4px;" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Unsicher? Einfach unverbindlich anfragen.
     </p>
   </div>
 </section>
@@ -570,8 +583,8 @@
       <div class="gs-svc-card" style="border:1.5px solid #e5e7eb;border-radius:20px;overflow:hidden;background:#fff;">
         <div style="height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
         <div style="padding:32px 28px;">
-          <div style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;border:1px solid #fcd34d;border-radius:50px;padding:4px 12px;font:700 .72rem 'Inter',sans-serif;margin-bottom:14px;">⭐ Meistgebucht</div>
-          <div style="font-size:34px;margin-bottom:16px;">🌿</div>
+          <div style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;border:1px solid #fcd34d;border-radius:50px;padding:4px 12px;font:700 .72rem 'Inter',sans-serif;margin-bottom:14px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="vertical-align:-0.12em;margin-right:5px;" aria-hidden="true"><path d="M12 2.5l2.7 5.47 6.04.88-4.37 4.26 1.03 6.01L12 16.3l-5.4 2.84 1.03-6.01L3.26 8.85l6.04-.88z" fill="currentColor" stroke="none"/></svg>Meistgebucht</div>
+          <div style="margin-bottom:18px;color:#16a34a;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M3 21h18"/><path d="M7 21c-1-4-2-6-3-8"/><path d="M7 21c0-5 .5-8 2-11"/><path d="M12 21c-1-4-1-8 .5-12"/><path d="M12 21c1-4 2-7 4-9"/><path d="M17 21c0-3 .5-5 2-7"/></svg></div>
           <h3 style="font:700 1.1rem 'Inter',sans-serif;color:#111827;margin-bottom:8px;">Rasenmähen</h3>
           <p style="font:400 .88rem/1.6 'Inter',sans-serif;color:#6b7280;margin-bottom:18px;">Gleichmäßiges Mähen mit sauberem Kantenschnitt. Ihr Rasen sieht danach aus wie aus dem Katalog.</p>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
@@ -586,7 +599,7 @@
       <div class="gs-svc-card" style="border:1.5px solid #e5e7eb;border-radius:20px;overflow:hidden;background:#fff;">
         <div style="height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
         <div style="padding:32px 28px;">
-          <div style="font-size:34px;margin-bottom:16px;">✂️</div>
+          <div style="margin-bottom:18px;color:#16a34a;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
           <h3 style="font:700 1.1rem 'Inter',sans-serif;color:#111827;margin-bottom:8px;">Heckenschnitt</h3>
           <p style="font:400 .88rem/1.6 'Inter',sans-serif;color:#6b7280;margin-bottom:18px;">Gerade Schnittlinie, saubere Kanten: Thuja, Liguster, Buchs und alle gängigen Heckenpflanzen.</p>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
@@ -601,7 +614,7 @@
       <div class="gs-svc-card" style="border:1.5px solid #e5e7eb;border-radius:20px;overflow:hidden;background:#fff;">
         <div style="height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
         <div style="padding:32px 28px;">
-          <div style="font-size:34px;margin-bottom:16px;">🌳</div>
+          <div style="margin-bottom:18px;color:#16a34a;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></svg></div>
           <h3 style="font:700 1.1rem 'Inter',sans-serif;color:#111827;margin-bottom:8px;">Büsche &amp; Gehölze</h3>
           <p style="font:400 .88rem/1.6 'Inter',sans-serif;color:#6b7280;margin-bottom:18px;">Auslichten, Formen und Schneiden von Ziergehölzen, Rosen und kleinen Bäumen bis ca. 4 m Höhe.</p>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
@@ -616,7 +629,7 @@
       <div class="gs-svc-card" style="border:1.5px solid #e5e7eb;border-radius:20px;overflow:hidden;background:#fff;">
         <div style="height:3px;background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
         <div style="padding:32px 28px;">
-          <div style="font-size:34px;margin-bottom:16px;">🍂</div>
+          <div style="margin-bottom:18px;color:#16a34a;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M16.5 4.5 19.5 7.5"/><path d="M18 6 9.8 14.2"/><path d="M9.8 14.2 4.2 19 7.6 22 13.2 17.6 9.8 14.2Z"/><path d="M5.6 17.6 8.2 20.4 M7.3 16 9.9 18.8 M9 14.6 11.5 17.3"/></svg></div>
           <h3 style="font:700 1.1rem 'Inter',sans-serif;color:#111827;margin-bottom:8px;">Gartenreinigung</h3>
           <p style="font:400 .88rem/1.6 'Inter',sans-serif;color:#6b7280;margin-bottom:18px;">Frühjahr oder Herbst: Laub, Beete, Unkraut. Ihr Garten startet sauber in die neue Saison.</p>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
@@ -630,7 +643,7 @@
 
     </div>
     <div style="text-align:center;margin-top:48px;">
-      <a href="#buchen" style="display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font:700 1rem 'Inter',sans-serif;color:#fff;background:#16a34a;box-shadow:0 4px 16px rgba(22,163,74,.3);">📋 Einzelauftrag anfragen</a>
+      <a href="#buchen" style="display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font:700 1rem 'Inter',sans-serif;color:#fff;background:#16a34a;box-shadow:0 4px 16px rgba(22,163,74,.3);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg>Einzelauftrag anfragen</a>
     </div>
   </div>
 </section>
@@ -645,19 +658,19 @@
         <p style="font:400 1.05rem/1.65 'Inter',sans-serif;color:#6b7280;margin-bottom:40px;max-width:460px;">Wir sind ein Team aus Haiger-Offdilln. Unser Anspruch: Ihr Garten sieht nach unserer Arbeit wirklich gut aus – nicht nur „erledigt".</p>
         <div style="display:flex;flex-direction:column;gap:26px;">
           <div style="display:flex;gap:16px;align-items:flex-start;">
-            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🎯</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#15803d;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
             <div><h4 style="font:700 .96rem 'Inter',sans-serif;color:#111827;margin-bottom:4px;">Höchste Präzision</h4><p style="font:400 .87rem/1.6 'Inter',sans-serif;color:#6b7280;">Wir arbeiten mit Sorgfalt und Blick fürs Detail – das ist der Unterschied zwischen einem ordentlichen und einem wirklich schönen Garten.</p></div>
           </div>
           <div style="display:flex;gap:16px;align-items:flex-start;">
-            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">💰</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#15803d;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.59a2.43 2.43 0 0 0 0-3.41z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
             <div><h4 style="font:700 .96rem 'Inter',sans-serif;color:#111827;margin-bottom:4px;">Klares Angebot, kein Kleingedrucktes</h4><p style="font:400 .87rem/1.6 'Inter',sans-serif;color:#6b7280;">Kein Preis von der Stange. Sie erhalten vorab ein klares Angebot – transparent, verbindlich, ohne Nachträge.</p></div>
           </div>
           <div style="display:flex;gap:16px;align-items:flex-start;">
-            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📅</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#15803d;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M8 2v4M16 2v4M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7"/><path d="M3 10h18M15 20l2 2 4-4"/></svg></div>
             <div><h4 style="font:700 .96rem 'Inter',sans-serif;color:#111827;margin-bottom:4px;">Zuverlässige Termine</h4><p style="font:400 .87rem/1.6 'Inter',sans-serif;color:#6b7280;">Wir kommen pünktlich – keine langen Wartezeiten, keine spontanen Absagen.</p></div>
           </div>
           <div style="display:flex;gap:16px;align-items:flex-start;">
-            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📍</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#15803d;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div><h4 style="font:700 .96rem 'Inter',sans-serif;color:#111827;margin-bottom:4px;">Lokal &amp; persönlich</h4><p style="font:400 .87rem/1.6 'Inter',sans-serif;color:#6b7280;">Als Team aus Haiger-Offdilln kennen wir die Region. Kein anonymes Unternehmen – Sie haben immer direkten Kontakt zu uns.</p></div>
           </div>
         </div>
@@ -698,9 +711,9 @@
       <h2 style="font:400 clamp(1.9rem,4vw,2.8rem)/1.15 'DM Serif Display',Georgia,serif;color:#fff;margin-bottom:14px;">Im Raum Haiger<br>&amp; Siegen zu Hause</h2>
       <p style="font:400 1.05rem/1.65 'Inter',sans-serif;color:rgba(255,255,255,.6);margin-bottom:32px;">Wir sind in Haiger-Offdilln ansässig und fahren in einem Radius von ca. 30 km – für die gesamte Region zwischen Dillenburg, Siegen und Wetzlar.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <span style="background:#16a34a;border:1px solid #22c55e;border-radius:50px;padding:8px 20px;font:700 .85rem 'Inter',sans-serif;color:#fff;">📍 Haiger-Offdilln</span>
+        <span style="background:#16a34a;border:1px solid #22c55e;border-radius:50px;padding:8px 20px;font:700 .85rem 'Inter',sans-serif;color:#fff;display:inline-flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Haiger-Offdilln</span>
         <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:8px 20px;font:500 .85rem 'Inter',sans-serif;color:#fff;">Haiger</span>
-        <span style="background:#16a34a;border:1px solid #22c55e;border-radius:50px;padding:8px 20px;font:700 .85rem 'Inter',sans-serif;color:#fff;">📍 Siegen</span>
+        <span style="background:#16a34a;border:1px solid #22c55e;border-radius:50px;padding:8px 20px;font:700 .85rem 'Inter',sans-serif;color:#fff;display:inline-flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Siegen</span>
         <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:8px 20px;font:500 .85rem 'Inter',sans-serif;color:#fff;">Dillenburg</span>
         <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:8px 20px;font:500 .85rem 'Inter',sans-serif;color:#fff;">Herborn</span>
         <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:8px 20px;font:500 .85rem 'Inter',sans-serif;color:#fff;">Burbach</span>
@@ -714,10 +727,28 @@
         <span style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:8px 20px;font:400 .85rem 'Inter',sans-serif;color:rgba(255,255,255,.45);">+ weitere auf Anfrage</span>
       </div>
     </div>
-    <div class="gs-map-ph" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
-      <div style="font-size:3rem;opacity:.45;">🗺️</div>
-      <p style="font:500 .9rem 'Inter',sans-serif;color:rgba(255,255,255,.4);">Kartenansicht</p>
-      <small style="font:400 .75rem 'Inter',sans-serif;color:rgba(255,255,255,.25);">Google Maps hier einbetten</small>
+    <div class="gs-map-ph" style="position:relative;overflow:hidden;background:rgba(255,255,255,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:20px;min-height:320px;display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 400 320" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute;inset:0;opacity:.55;">
+        <g stroke="rgba(255,255,255,.16)" stroke-width="1" fill="none">
+          <path d="M0 80H400 M0 160H400 M0 240H400 M80 0V320 M160 0V320 M240 0V320 M320 0V320"/>
+        </g>
+        <g stroke="rgba(74,222,128,.4)" stroke-width="2.5" fill="none" stroke-linecap="round">
+          <path d="M-20 64 Q170 150 420 92"/>
+          <path d="M44 -20 Q120 150 78 340"/>
+          <path d="M300 -10 Q250 160 360 330"/>
+        </g>
+      </svg>
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:28px;">
+        <svg width="92" height="92" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+          <circle cx="48" cy="54" r="40" stroke="rgba(74,222,128,.22)" stroke-width="1.5"/>
+          <circle cx="48" cy="54" r="27" stroke="rgba(74,222,128,.38)" stroke-width="1.5"/>
+          <circle cx="48" cy="54" r="15" stroke="rgba(74,222,128,.55)" stroke-width="1.5"/>
+          <path d="M48 20a13 13 0 0 0-13 13c0 9 13 21 13 21s13-12 13-21a13 13 0 0 0-13-13Z" fill="rgba(74,222,128,.16)" stroke="#4ade80" stroke-width="2"/>
+          <circle cx="48" cy="33" r="4.6" fill="#0c3318" stroke="#4ade80" stroke-width="2"/>
+        </svg>
+        <div style="font:600 .95rem 'Inter',sans-serif;color:#fff;">30 km Serviceradius rund um Haiger-Offdilln</div>
+        <small style="font:400 .75rem 'Inter',sans-serif;color:rgba(255,255,255,.4);">Google Maps hier einbetten</small>
+      </div>
     </div>
   </div>
 </section>
@@ -734,17 +765,17 @@
     <!-- Channels -->
     <div class="gs-channels" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:52px;">
       <a class="gs-channel-card" href="https://wa.me/4917666388515" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:28px 22px;border-radius:20px;background:#22a856;color:#fff;">
-        <span style="font-size:2rem;">💬</span>
+        <span style="display:flex;color:#fff;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
         <h4 style="font:700 1.05rem 'Inter',sans-serif;">WhatsApp</h4>
         <p style="font:400 .82rem 'Inter',sans-serif;color:rgba(255,255,255,.8);">Foto &amp; Maße schnell schicken</p>
       </a>
       <a class="gs-channel-card" href="tel:+4917666388515" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:28px 22px;border-radius:20px;background:#fff;border:1.5px solid #e5e7eb;">
-        <span style="font-size:2rem;">📞</span>
+        <span style="display:flex;color:#16a34a;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.83 16.57a1 1 0 0 0 1.21-.3l.36-.47A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.47.35a1 1 0 0 0-.29 1.23 14 14 0 0 0 6.39 6.38Z"/></svg></span>
         <h4 style="font:700 1.05rem 'Inter',sans-serif;color:#111827;">Anrufen</h4>
         <p style="font:400 .82rem 'Inter',sans-serif;color:#6b7280;">Direkt persönlich klären</p>
       </a>
       <a class="gs-channel-card" href="#formular" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:28px 22px;border-radius:20px;background:#fff;border:1.5px solid #e5e7eb;">
-        <span style="font-size:2rem;">📋</span>
+        <span style="display:flex;color:#16a34a;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg></span>
         <h4 style="font:700 1.05rem 'Inter',sans-serif;color:#111827;">Formular</h4>
         <p style="font:400 .82rem 'Inter',sans-serif;color:#6b7280;">In 2 Minuten ausgefüllt</p>
       </a>
@@ -782,13 +813,13 @@
               <div>
                 <input type="radio" id="gs-art-abo" name="auftragsart" value="Pflege-Abo" checked="" style="position:absolute;opacity:0;width:0;height:0;">
                 <label for="gs-art-abo" id="gs-lbl-abo" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1.5px solid #22c55e;border-radius:12px;cursor:pointer;font:500 .9rem 'Inter',sans-serif;color:#15803d;background:#f0fdf4;transition:all .2s;">
-                  <span style="font-size:1.2rem;">🔄</span>Pflege-Abo
+                  <span style="display:flex;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span>Pflege-Abo
                 </label>
               </div>
               <div>
                 <input type="radio" id="gs-art-einzel" name="auftragsart" value="Einzelauftrag" style="position:absolute;opacity:0;width:0;height:0;">
                 <label for="gs-art-einzel" id="gs-lbl-einzel" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1.5px solid #e5e7eb;border-radius:12px;cursor:pointer;font:500 .9rem 'Inter',sans-serif;color:#374151;background:#fff;transition:all .2s;">
-                  <span style="font-size:1.2rem;">📋</span>Einzelauftrag
+                  <span style="display:flex;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg></span>Einzelauftrag
                 </label>
               </div>
             </div>
@@ -827,7 +858,7 @@
           <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
             <label style="font:600 .85rem 'Inter',sans-serif;color:#374151;">Fotos vom Garten (optional, hilft beim Angebot)</label>
             <label id="gs-file-drop" class="gs-file-drop" for="gs-fotos" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 20px;border:2px dashed #e5e7eb;border-radius:12px;background:#f9fafb;cursor:pointer;text-align:center;transition:border-color .2s,background .2s;">
-              <span style="font-size:1.8rem;">📷</span>
+              <span style="display:flex;color:#16a34a;margin-bottom:2px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg></span>
               <span style="font:600 .9rem 'Inter',sans-serif;color:#374151;">Fotos auswählen oder hierher ziehen</span>
               <span style="font:400 .76rem 'Inter',sans-serif;color:#9ca3af;">JPG oder PNG · bis zu 5 Bilder · zusammen max. ca. 8 MB</span>
             </label>
@@ -839,10 +870,10 @@
             <input class="gs-input" type="text" id="gs-zeitraum" name="zeitraum" placeholder="z.B. &quot;Ende Juni&quot; oder &quot;so bald wie möglich&quot;" style="padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:12px;font:400 .95rem 'Inter',sans-serif;color:#111827;background:#fff;transition:border-color .2s,box-shadow .2s;">
           </div>
           <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px 18px;font:400 .83rem/1.5 'Inter',sans-serif;color:#15803d;margin-bottom:24px;display:flex;gap:8px;align-items:flex-start;">
-            ℹ️ Sie erhalten von uns innerhalb von 24 Stunden ein konkretes Angebot – unverbindlich und kostenlos.
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:8px;flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Sie erhalten von uns innerhalb von 24 Stunden ein konkretes Angebot – unverbindlich und kostenlos.
           </div>
-          <button type="submit" class="gs-submit" style="width:100%;padding:16px;font:700 1rem 'Inter',sans-serif;color:#fff;background:#16a34a;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 16px rgba(22,163,74,.3);transition:background .2s,transform .2s;">📋 Kostenloses Angebot anfordern</button>
-          <p style="font:400 .78rem 'Inter',sans-serif;color:#9ca3af;text-align:center;margin-top:12px;">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Angebotserstellung zu. <a href="#datenschutz" style="color:#16a34a;">Datenschutzerklärung</a></p>
+          <button type="submit" class="gs-submit" style="width:100%;padding:16px;font:700 1rem 'Inter',sans-serif;color:#fff;background:#16a34a;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 16px rgba(22,163,74,.3);transition:background .2s,transform .2s;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:8px;" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg>Kostenloses Angebot anfordern</button>
+          <p style="font:400 .78rem 'Inter',sans-serif;color:#9ca3af;text-align:center;margin-top:12px;">Mit dem Absenden Ihrer Anfrage werden Ihre Daten zur Bearbeitung und Angebotserstellung verarbeitet (Art. 6 Abs. 1 lit. b DSGVO). Hinweise zur Verarbeitung und zur Übermittlung an FormSubmit (USA) finden Sie in unserer <a href="#datenschutz" style="color:#16a34a;">Datenschutzerklärung</a></p>
         </form>
       </div>
     </div>
@@ -855,16 +886,16 @@
   <div style="max-width:1100px;margin:0 auto;padding:0 24px;position:relative;">
     <div class="gs-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1);">
       <div>
-        <div style="font:800 1.1rem 'Inter',sans-serif;color:#fff;display:flex;align-items:center;gap:10px;margin-bottom:14px;"><span>🌿</span>Gartenservice Schäfer</div>
+        <div style="font:800 1.1rem 'Inter',sans-serif;color:#fff;display:flex;align-items:center;gap:10px;margin-bottom:14px;"><span style="display:flex;color:#4ade80;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></span>Gartenservice Schäfer</div>
         <p style="font:400 .87rem/1.7 'Inter',sans-serif;color:rgba(255,255,255,.55);max-width:280px;">Professioneller Gartenservice aus Haiger-Offdilln. Im Pflege-Abo oder als Einzelauftrag – im Raum Haiger, Siegen und Dillenburg.</p>
       </div>
       <div>
         <h4 style="font:700 .8rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:18px;">Kontakt</h4>
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <a href="https://wa.me/4917666388515" target="_blank" rel="noopener" class="gs-footer-link" style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);transition:color .2s;">💬 WhatsApp schreiben</a>
-          <a href="tel:+4917666388515" class="gs-footer-link" style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);transition:color .2s;">📞 +49 176 663 885 15</a>
-          <a href="mailto:info@gartenservice-schaefer.de" class="gs-footer-link" style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);transition:color .2s;">✉️ info@gartenservice-schaefer.de</a>
-          <span style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);">📍 Bedenbenderweg 23, 35708 Haiger</span>
+          <a href="https://wa.me/4917666388515" target="_blank" rel="noopener" class="gs-footer-link" style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);transition:color .2s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.18em;margin-right:7px;flex-shrink:0;" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp schreiben</a>
+          <a href="tel:+4917666388515" class="gs-footer-link" style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);transition:color .2s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.18em;margin-right:7px;flex-shrink:0;" aria-hidden="true"><path d="M13.83 16.57a1 1 0 0 0 1.21-.3l.36-.47A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.47.35a1 1 0 0 0-.29 1.23 14 14 0 0 0 6.39 6.38Z"/></svg>+49 176 663 885 15</a>
+          <a href="mailto:info@gartenservice-schaefer.de" class="gs-footer-link" style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);transition:color .2s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.18em;margin-right:7px;flex-shrink:0;" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>info@gartenservice-schaefer.de</a>
+          <span style="font:400 .87rem 'Inter',sans-serif;color:rgba(255,255,255,.55);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.18em;margin-right:7px;flex-shrink:0;" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Bedenbenderweg 23, 35708 Haiger</span>
         </div>
       </div>
       <div>
@@ -894,13 +925,11 @@
 <section id="impressum" style="padding:80px 0;background:#f8faf8;">
   <div class="gs-legal" style="max-width:700px;margin:0 auto;padding:0 24px;">
     <h2>Impressum</h2>
-    <p><strong style="color:#374151;">Angaben gemäß § 5 TMG</strong></p>
+    <p><strong style="color:#374151;">Angaben gemäß § 5 DDG</strong></p>
     <h3>Verantwortlich</h3>
     <p>Markus Schäfer<br>Bedenbenderweg 23<br>35708 Haiger</p>
     <h3>Kontakt</h3>
     <p>Telefon: <strong style="color:#374151;">+49 176 663 885 15</strong><br>E-Mail: <strong style="color:#374151;">info@gartenservice-schaefer.de</strong></p>
-    <h3>Hinweis</h3>
-    <p>Impressum ggf. über <a href="https://www.e-recht24.de/impressum-generator.html" target="_blank" rel="noopener">eRecht24</a> prüfen lassen.</p>
   </div>
 </section>
 
@@ -910,19 +939,23 @@
     <h2>Datenschutzerklärung</h2>
     <h3>1. Verantwortlicher</h3>
     <p>Markus Schäfer, Bedenbenderweg 23, 35708 Haiger<br>E-Mail: <strong style="color:#374151;">info@gartenservice-schaefer.de</strong></p>
-    <h3>2. Erhebung und Verarbeitung personenbezogener Daten</h3>
-    <p>Diese Website erhebt personenbezogene Daten ausschließlich dann, wenn Sie das Kontaktformular ausfüllen. Die Daten werden zur Angebotserstellung verwendet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
-    <h3>3. Weitergabe von Daten</h3>
-    <p>Ihre Daten werden nicht an Dritte weitergegeben. Eine Ausnahme besteht, wenn Sie das Kontaktformular über einen externen Dienst (z. B. Formspree) absenden.</p>
-    <h3>4. Speicherdauer</h3>
+    <h3>2. Hosting und Server-Logfiles</h3>
+    <p>Diese Website wird über <strong style="color:#374151;">GitHub Pages</strong> bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (EU-Vertretung: GitHub B.V., Vijzelstraat 68–72, 1017 HL Amsterdam, Niederlande). Beim Aufruf der Seite verarbeitet GitHub automatisch technische Zugriffsdaten (Server-Logfiles): IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Datei, übertragene Datenmenge, Browsertyp und Betriebssystem. Diese Daten dienen dem sicheren und stabilen Betrieb der Website. Rechtsgrundlage ist unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f DSGVO. Da GitHub die Daten auch in den USA verarbeitet, stützt sich die Übermittlung auf geeignete Garantien: GitHub ist unter dem EU-US Data Privacy Framework zertifiziert und setzt ergänzend die EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) ein. Die Domain wird über die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, verwaltet.</p>
+    <h3>3. Kontaktformular</h3>
+    <p>Wenn Sie das Kontaktformular ausfüllen, verarbeiten wir die von Ihnen angegebenen Daten (Name, Telefonnummer, E-Mail-Adresse, Anschrift, Angaben zum Auftrag sowie optional hochgeladene Fotos), um Ihre Anfrage zu bearbeiten und Ihnen ein Angebot zu erstellen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage). Die Angabe der Daten ist freiwillig; ohne sie können wir Ihre Anfrage jedoch nicht bearbeiten.</p>
+    <h3>4. Formularversand über FormSubmit (Übermittlung in die USA)</h3>
+    <p>Für die Übermittlung der Formulardaten nutzen wir den Dienst FormSubmit (Devro LABS). Beim Absenden werden Ihre Formulardaten über die Server von FormSubmit verarbeitet und per E-Mail an uns weitergeleitet. Die Verarbeitung erfolgt dabei auf Servern in den USA. Die USA gelten nicht uneingeschränkt als sicheres Drittland; insbesondere ist ein Zugriff durch US-Behörden nicht auszuschließen. Die Übermittlung erfolgt auf Grundlage von Art. 49 Abs. 1 lit. b DSGVO, da sie zur Durchführung der von Ihnen angefragten vorvertraglichen Maßnahme (Angebotserstellung) erforderlich ist. Weitere Informationen zur Datenverarbeitung durch FormSubmit finden Sie unter <a href="https://formsubmit.co/privacy" target="_blank" rel="noopener">formsubmit.co/privacy</a>.</p>
+    <h3>5. Kontaktaufnahme per E-Mail, Telefon oder WhatsApp</h3>
+    <p>Wenn Sie uns per E-Mail, telefonisch oder über WhatsApp kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung Ihres Anliegens. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Bei der Nutzung von WhatsApp (WhatsApp Ireland Ltd., Meta-Gruppe) können Daten auch in die USA übermittelt werden; auf diese Verarbeitung haben wir keinen Einfluss. Wenn Sie das vermeiden möchten, kontaktieren Sie uns bitte per E-Mail oder Telefon.</p>
+    <h3>6. Speicherdauer</h3>
     <p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die Auftragsabwicklung erforderlich ist, maximal jedoch 3 Jahre nach Abschluss des Auftrags.</p>
-    <h3>5. Cookies</h3>
-    <p>Diese Website verwendet keine Tracking-Cookies oder Analyse-Dienste.</p>
-    <h3>6. Ihre Rechte</h3>
+    <h3>7. Cookies</h3>
+    <p>Diese Website verwendet keine Cookies, kein Tracking und keine Analyse-Dienste.</p>
+    <h3>8. Ihre Rechte</h3>
     <p>Sie haben gemäß DSGVO das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Kontakt: <strong style="color:#374151;">info@gartenservice-schaefer.de</strong></p>
-    <h3>7. Beschwerderecht</h3>
+    <h3>9. Beschwerderecht</h3>
     <p>Zuständig ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit (HBDI), Postfach 3163, 65021 Wiesbaden, <a href="https://www.datenschutz.hessen.de" target="_blank" rel="noopener">www.datenschutz.hessen.de</a>.</p>
-    <h3>8. Aktualität</h3>
+    <h3>10. Aktualität</h3>
     <p>Stand: Juni 2026.</p>
   </div>
 </section>
@@ -1015,7 +1048,7 @@ class Component extends DCLogic {
           const item = document.createElement('div');
           item.style.cssText = 'display:flex;align-items:center;gap:8px;font:500 .82rem Inter,sans-serif;color:#374151;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:6px 12px;';
           const mb = (file.size / 1024 / 1024).toFixed(1);
-          item.innerHTML = '<span>🖼️</span><span>' + file.name + ' (' + mb + ' MB)</span>';
+          item.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;margin-right:6px;" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></svg><span>' + file.name + ' (' + mb + ' MB)</span>';
           fileList.appendChild(item);
         });
       };
