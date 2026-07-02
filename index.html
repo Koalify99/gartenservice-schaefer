@@ -52,6 +52,7 @@
     font-size:17px;
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
+    overflow-anchor:none;
   }
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;color:var(--ink);margin:0;line-height:1.06;letter-spacing:-.01em;}
   h1{font-size:clamp(2.6rem,5.4vw,4.3rem);}
@@ -278,6 +279,11 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
 
+  /* menu button icon states */
+  .menu-btn .icon-close{display:none;}
+  header.nav-open .menu-btn .icon-open{display:none;}
+  header.nav-open .menu-btn .icon-close{display:block;}
+
   /* Responsive */
   @media(max-width:900px){
     .hero-grid,.abo-why,.about,.area-grid,.booking-grid{grid-template-columns:1fr;}
@@ -285,15 +291,47 @@
     .about .frame{max-width:360px;}
     .steps,.services,.season-grid,.plans{grid-template-columns:1fr;}
     .season-grid{border-radius:14px;}
-    .nav-links{display:none;}
     .menu-btn{display:inline-flex;}
     .about{direction:ltr;}
     .about .about-photo{order:-1;}
+
+    /* Mobile dropdown navigation */
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:rgba(237,239,230,.98);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--stone);
+      box-shadow:0 24px 40px -26px rgba(30,42,33,.5);
+      padding:6px 26px 18px;
+      max-height:0;overflow:hidden;
+      opacity:0;visibility:hidden;
+      transition:max-height .34s ease,opacity .24s ease,visibility .24s;
+    }
+    header.nav-open .nav-links{
+      max-height:calc(100vh - 72px);
+      overflow:auto;opacity:1;visibility:visible;
+    }
+    .nav-links a{
+      padding:15px 4px;font-size:1.06rem;
+      border-bottom:1px solid var(--stone);
+    }
+    .nav-links a:last-child{border-bottom:none;}
+    .nav-links .nav-cta{
+      margin-top:14px;justify-content:center;
+      background:var(--moss-deep);color:#F4F5EE;
+      border-radius:var(--radius);padding:15px 20px;
+    }
+    .nav-links .nav-cta:hover{color:#fff;}
   }
   @media(max-width:560px){
     body{font-size:16px;}
     .services{gap:14px;}
     .foot-grid{flex-direction:column;}
+    .wrap{padding:0 20px;}
+    .hero-actions .btn{flex:1 1 auto;justify-content:center;}
+    .trust-row{gap:18px;}
+    .booking-grid form{padding:24px 20px;}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
@@ -304,9 +342,20 @@
 </head>
 <body>
 <script>
-  // Immer oben starten (verhindert, dass Mobile-Browser zur zweiten Sektion springen)
+  // Immer oben starten (verhindert, dass In-App-Browser wie WhatsApp zur zweiten Sektion springen)
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  window.addEventListener('pageshow', function(){ if(!location.hash) window.scrollTo(0, 0); });
+  (function(){
+    function toTop(){ if(!location.hash) window.scrollTo(0, 0); }
+    toTop();
+    document.addEventListener('DOMContentLoaded', toTop);
+    window.addEventListener('pageshow', toTop);
+    window.addEventListener('load', function(){
+      toTop();
+      setTimeout(toTop, 60);
+      setTimeout(toTop, 250);
+      setTimeout(toTop, 600);
+    });
+  })();
 </script>
 
 <!-- ============ HEADER ============ -->
@@ -325,7 +374,7 @@
         <span class="brand-name">Schäfer</span>
       </span>
     </a>
-    <nav class="nav-links" aria-label="Hauptnavigation">
+    <nav class="nav-links" id="primaryNav" aria-label="Hauptnavigation">
       <a href="#ablauf">Ablauf</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#gartenjahr">Das Gartenjahr</a>
@@ -336,8 +385,9 @@
         Termin anfragen
       </a>
     </nav>
-    <button class="menu-btn" aria-label="Menü" onclick="document.getElementById('buchen').scrollIntoView()">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primaryNav">
+      <svg class="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
   </div>
 </header>
@@ -705,15 +755,15 @@
     </div>
     <div class="booking-grid">
       <div class="contact-methods reveal">
-        <a class="cmethod" href="tel:+49">
+        <a class="cmethod" href="tel:+4917666388515">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <div><small>Anrufen</small><b>Telefonnummer hier eintragen</b></div>
+          <div><small>Anrufen</small><b>Direkt anrufen</b></div>
         </a>
-        <a class="cmethod" href="mailto:">
+        <a class="cmethod" href="mailto:info@gartenservice-schaefer.de">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          <div><small>E-Mail</small><b>E-Mail-Adresse hier eintragen</b></div>
+          <div><small>E-Mail</small><b>info@gartenservice-schaefer.de</b></div>
         </a>
-        <a class="cmethod" href="#">
+        <a class="cmethod" href="https://wa.me/4917666388515?text=Hallo%20Gartenservice%20Sch%C3%A4fer%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Gartenpflege." target="_blank" rel="noopener">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           <div><small>WhatsApp</small><b>Schnell &amp; unkompliziert</b></div>
         </a>
@@ -789,8 +839,9 @@
       <div class="foot-col">
         <h4>Kontakt</h4>
         <a href="#buchen">Termin anfragen</a>
-        <a href="tel:+49">Anrufen</a>
-        <a href="mailto:">E-Mail</a>
+        <a href="tel:+4917666388515">Anrufen</a>
+        <a href="mailto:info@gartenservice-schaefer.de">info@gartenservice-schaefer.de</a>
+        <a href="https://wa.me/4917666388515" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -801,6 +852,27 @@
 </footer>
 
 <script>
+  // Mobile-Navigation Toggle
+  (function(){
+    var header = document.querySelector('header');
+    var btn = document.getElementById('menuBtn');
+    var nav = document.getElementById('primaryNav');
+    if(!header || !btn || !nav) return;
+    function closeMenu(){
+      header.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded','false');
+      btn.setAttribute('aria-label','Menü öffnen');
+    }
+    btn.addEventListener('click', function(){
+      var open = header.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    nav.addEventListener('click', function(e){ if(e.target.closest('a')) closeMenu(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+    window.addEventListener('resize', function(){ if(window.innerWidth > 900) closeMenu(); });
+  })();
+
   // Gentle scroll reveal, respects reduced motion
   (function(){
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
