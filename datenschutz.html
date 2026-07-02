@@ -5,73 +5,118 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>Datenschutzerklärung · Gartenservice Schäfer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232B4D34%27/%3E%3Cpath%20d%3D%27M16%205%20C21%209%2023%2017%2022%2023%20C21.5%2027%2019%2029%2016%2029%20C13%2029%2010.5%2027%2010%2023%20C9%2017%2011%209%2016%205%20Z%27%20fill%3D%27none%27%20stroke%3D%27%23EDEFE6%27%20stroke-width%3D%271.6%27%20stroke-linejoin%3D%27round%27/%3E%3Cline%20x1%3D%2716%27%20y1%3D%278%27%20x2%3D%2716%27%20y2%3D%2727.5%27%20stroke%3D%27%23EBD3BB%27%20stroke-width%3D%271.3%27%20stroke-linecap%3D%27round%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:#1f2a24;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
-  .topbar{border-bottom:1px solid #e5e7eb;background:#fff;}
-  .topbar-inner{max-width:760px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
-  .logo{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',Georgia,serif;font-size:1.15rem;color:#0c3318;}
-  .back{font:600 .9rem 'Inter',sans-serif;color:#16a34a;text-decoration:none;}
-  .back:hover{text-decoration:underline;}
-  .gs-legal{max-width:760px;margin:0 auto;padding:56px 24px 80px;}
-  .gs-legal h1{font:400 clamp(1.9rem,4vw,2.5rem)/1.15 'DM Serif Display',Georgia,serif;color:#111827;margin-bottom:28px;}
-  .gs-legal h2{font:400 2rem/1.2 'DM Serif Display',Georgia,serif;color:#111827;margin-bottom:24px;}
-  .gs-legal h3{font:700 1rem 'Inter',sans-serif;color:#111827;margin:28px 0 8px;}
-  .gs-legal p,.gs-legal li{font:400 .9rem/1.8 'Inter',sans-serif;color:#6b7280;}
-  .gs-legal ul{padding-left:20px;margin-bottom:12px;}
-  .gs-legal a{color:#16a34a;}
-  footer{border-top:1px solid #e5e7eb;background:#f8faf8;}
-  .foot-inner{max-width:760px;margin:0 auto;padding:24px;font:400 .82rem 'Inter',sans-serif;color:#6b7280;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-  .foot-inner a{color:#6b7280;text-decoration:none;margin-left:16px;}
-  .foot-inner a:hover{color:#16a34a;}
+  :root{
+    --ink:#1E2A21;--ink-soft:#54604F;--moss:#3F6B48;--moss-deep:#2B4D34;
+    --fern:#6E9A5E;--paper:#EDEFE6;--card:#F8F7F0;--stone:#DEDDCE;--clay:#C36B36;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:var(--moss);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible{outline:3px solid var(--clay);outline-offset:3px;border-radius:5px;}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(237,239,230,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--stone);}
+  .topbar-inner{max-width:820px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand .mark{width:22px;height:36px;flex-shrink:0;display:block;}
+  .brand-divider{width:1px;height:30px;background:rgba(43,77,52,.18);display:block;}
+  .brand-words{display:flex;flex-direction:column;line-height:1;}
+  .brand-eyebrow{font-weight:600;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);}
+  .brand-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;color:var(--moss-deep);margin-top:5px;line-height:1;letter-spacing:-.01em;}
+  .back{font-weight:600;font-size:.92rem;color:var(--moss);display:inline-flex;align-items:center;gap:7px;}
+  .back svg{width:16px;height:16px;}
+
+  .legal{max-width:820px;margin:0 auto;padding:clamp(44px,7vw,72px) 26px 90px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:16px;}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--clay);display:inline-block;}
+  .legal h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--ink);letter-spacing:-.01em;line-height:1.05;margin-bottom:14px;}
+  .legal .intro{color:var(--ink-soft);font-size:1.05rem;margin-bottom:40px;}
+  .card{background:var(--card);border:1px solid var(--stone);border-radius:18px;padding:clamp(28px,4vw,44px);}
+  .legal h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;color:var(--ink);margin:34px 0 8px;padding-top:24px;border-top:1px solid var(--stone);}
+  .legal .card > h3:first-child{margin-top:0;padding-top:0;border-top:none;}
+  .legal p{color:var(--ink-soft);margin-bottom:6px;}
+  .legal strong{color:var(--ink);font-weight:600;}
+
+  footer{background:var(--moss-deep);color:#B8CFAE;padding:34px 0;}
+  .foot-inner{max-width:820px;margin:0 auto;padding:0 26px;font-size:.86rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .foot-inner a{color:#C4D2BC;margin-left:18px;}
+  .foot-inner a:first-child{margin-left:0;}
+  .foot-inner a:hover{color:#F4F5EE;}
+
+  @media(max-width:560px){.foot-inner{flex-direction:column;}.foot-inner a{margin-left:0;}}
 </style>
 </head>
 <body>
-  <div class="topbar"><div class="topbar-inner">
-    <a href="index.html" aria-label="Gartenservice Schäfer – Startseite" style="display:flex;align-items:center;gap:13px;text-decoration:none;">
-      <svg width="24" height="40" viewBox="0 0 22 36" fill="none" style="display:block;flex-shrink:0;" aria-hidden="true">
-        <path d="M11 2 C16 6 19 15 18 22 C17 28 14.5 31 11 31 C7.5 31 5 28 4 22 C3 15 6 6 11 2 Z" stroke="#14532d" stroke-width="1.4" stroke-linejoin="round"></path>
-        <line x1="11" y1="5" x2="11" y2="29.5" stroke="#16a34a" stroke-width="0.9" stroke-linecap="round"></line>
-        <line x1="11" y1="31" x2="11" y2="36" stroke="#14532d" stroke-width="1.2" stroke-linecap="round"></line>
-      </svg>
-      <span aria-hidden="true" style="display:block;width:1px;height:30px;background:rgba(20,83,45,.16);"></span>
-      <span style="display:flex;flex-direction:column;line-height:1;">
-        <span style="font:600 9px/1 'Inter',sans-serif;letter-spacing:.3em;text-transform:uppercase;color:rgba(20,83,45,.5);">Gartenservice</span>
-        <span style="font:400 1.5rem/1 'DM Serif Display',Georgia,serif;color:#14532d;margin-top:5px;">Schäfer</span>
-      </span>
-    </a>
-    <a href="index.html" class="back">← Zur Startseite</a>
-  </div></div>
-  <main class="gs-legal">
+  <header>
+    <div class="topbar-inner">
+      <a href="index.html" class="brand" aria-label="Gartenservice Schäfer – Startseite">
+        <svg class="mark" viewBox="0 0 22 36" fill="none" aria-hidden="true">
+          <path d="M11 2 C16 6 19 15 18 22 C17 28 14.5 31 11 31 C7.5 31 5 28 4 22 C3 15 6 6 11 2 Z" fill="rgba(63,107,72,.10)" stroke="#2B4D34" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="11" y1="5" x2="11" y2="29.5" stroke="#C36B36" stroke-width="1" stroke-linecap="round"/>
+          <path d="M11 13 L6.6 10 M11 19 L6.2 16.2 M11 13 L15.4 10 M11 19 L15.8 16.2" stroke="#3F6B48" stroke-width=".8" stroke-linecap="round" opacity=".55"/>
+          <line x1="11" y1="31" x2="11" y2="36" stroke="#2B4D34" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-words">
+          <span class="brand-eyebrow">Gartenservice</span>
+          <span class="brand-name">Schäfer</span>
+        </span>
+      </a>
+      <a href="index.html" class="back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Zur Startseite
+      </a>
+    </div>
+  </header>
+
+  <main class="legal">
+    <span class="eyebrow">Rechtliches</span>
     <h1>Datenschutzerklärung</h1>
-    <h3>1. Verantwortlicher</h3>
-    <p>Markus Schäfer, Bedenbenderweg 23, 35708 Haiger<br>E-Mail: <strong style="color:#374151;">info@gartenservice-schaefer.de</strong></p>
-    <h3>2. Hosting und Server-Logfiles</h3>
-    <p>Diese Website wird über <strong style="color:#374151;">GitHub Pages</strong> bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (EU-Vertretung: GitHub B.V., Vijzelstraat 68–72, 1017 HL Amsterdam, Niederlande). Beim Aufruf der Seite verarbeitet GitHub automatisch technische Zugriffsdaten (Server-Logfiles): IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Datei, übertragene Datenmenge, Browsertyp und Betriebssystem. Diese Daten dienen dem sicheren und stabilen Betrieb der Website. Rechtsgrundlage ist unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f DSGVO. Da GitHub die Daten auch in den USA verarbeitet, stützt sich die Übermittlung auf geeignete Garantien: GitHub ist unter dem EU-US Data Privacy Framework zertifiziert und setzt ergänzend die EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) ein. Die Domain wird über die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, verwaltet.</p>
-    <h3>3. Kontaktformular</h3>
-    <p>Wenn du das Kontaktformular ausfüllst, verarbeiten wir die von dir angegebenen Daten (Name, Telefonnummer, E-Mail-Adresse, Anschrift, Angaben zum Auftrag sowie optional hochgeladene Fotos), um deine Anfrage zu bearbeiten und dir ein Angebot zu erstellen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf deine Anfrage). Die Angabe der Daten ist freiwillig; ohne sie können wir deine Anfrage jedoch nicht bearbeiten.</p>
-    <h3>4. Formularversand über FormSubmit (Übermittlung in die USA)</h3>
-    <p>Für die Übermittlung der Formulardaten nutzen wir den Dienst FormSubmit (Devro LABS). Beim Absenden werden deine Formulardaten über die Server von FormSubmit verarbeitet und per E-Mail an uns weitergeleitet. Die Verarbeitung erfolgt dabei auf Servern in den USA. Die USA gelten nicht uneingeschränkt als sicheres Drittland; insbesondere ist ein Zugriff durch US-Behörden nicht auszuschließen. Die Übermittlung erfolgt auf Grundlage von Art. 49 Abs. 1 lit. b DSGVO, da sie zur Durchführung der von dir angefragten vorvertraglichen Maßnahme (Angebotserstellung) erforderlich ist. Weitere Informationen zur Datenverarbeitung durch FormSubmit findest du unter <a href="https://formsubmit.co/privacy" target="_blank" rel="noopener">formsubmit.co/privacy</a>.</p>
-    <h3>5. Kontaktaufnahme per E-Mail, Telefon oder WhatsApp</h3>
-    <p>Wenn du uns per E-Mail, telefonisch oder über WhatsApp kontaktierst, verarbeiten wir deine Angaben zur Bearbeitung deines Anliegens. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Bei der Nutzung von WhatsApp (WhatsApp Ireland Ltd., Meta-Gruppe) können Daten auch in die USA übermittelt werden; auf diese Verarbeitung haben wir keinen Einfluss. Wenn du das vermeiden möchtest, kontaktiere uns bitte per E-Mail oder Telefon.</p>
-    <h3>6. Speicherdauer</h3>
-    <p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die Auftragsabwicklung erforderlich ist, maximal jedoch 3 Jahre nach Abschluss des Auftrags.</p>
-    <h3>7. Cookies</h3>
-    <p>Diese Website verwendet keine Cookies, kein Tracking und keine Analyse-Dienste.</p>
-    <h3>8. Deine Rechte</h3>
-    <p>Du hast gemäß DSGVO das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Kontakt: <strong style="color:#374151;">info@gartenservice-schaefer.de</strong></p>
-    <h3>9. Beschwerderecht</h3>
-    <p>Zuständig ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit (HBDI), Postfach 3163, 65021 Wiesbaden, <a href="https://www.datenschutz.hessen.de" target="_blank" rel="noopener">www.datenschutz.hessen.de</a>.</p>
-    <h3>10. Aktualität</h3>
-    <p>Stand: Juni 2026.</p>
-  </div>
+    <p class="intro">Wie wir mit deinen Daten umgehen, kurz und klar erklärt.</p>
+
+    <div class="card">
+      <h3>1. Verantwortlicher</h3>
+      <p>Markus Schäfer, Bedenbenderweg 23, 35708 Haiger<br>E-Mail: <strong>info@gartenservice-schaefer.de</strong></p>
+
+      <h3>2. Hosting und Server-Logfiles</h3>
+      <p>Diese Website wird über <strong>GitHub Pages</strong> bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (EU-Vertretung: GitHub B.V., Vijzelstraat 68–72, 1017 HL Amsterdam, Niederlande). Beim Aufruf der Seite verarbeitet GitHub automatisch technische Zugriffsdaten (Server-Logfiles): IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Datei, übertragene Datenmenge, Browsertyp und Betriebssystem. Diese Daten dienen dem sicheren und stabilen Betrieb der Website. Rechtsgrundlage ist unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f DSGVO. Da GitHub die Daten auch in den USA verarbeitet, stützt sich die Übermittlung auf geeignete Garantien: GitHub ist unter dem EU-US Data Privacy Framework zertifiziert und setzt ergänzend die EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) ein. Die Domain wird über die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, verwaltet.</p>
+
+      <h3>3. Kontaktformular</h3>
+      <p>Wenn du das Kontaktformular ausfüllst, verarbeiten wir die von dir angegebenen Daten (Name, Telefonnummer, E-Mail-Adresse, Anschrift, Angaben zum Auftrag sowie optional hochgeladene Fotos), um deine Anfrage zu bearbeiten und dir ein Angebot zu erstellen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf deine Anfrage). Die Angabe der Daten ist freiwillig; ohne sie können wir deine Anfrage jedoch nicht bearbeiten.</p>
+
+      <h3>4. Formularversand über FormSubmit (Übermittlung in die USA)</h3>
+      <p>Für die Übermittlung der Formulardaten nutzen wir den Dienst FormSubmit (Devro LABS). Beim Absenden werden deine Formulardaten über die Server von FormSubmit verarbeitet und per E-Mail an uns weitergeleitet. Die Verarbeitung erfolgt dabei auf Servern in den USA. Die USA gelten nicht uneingeschränkt als sicheres Drittland; insbesondere ist ein Zugriff durch US-Behörden nicht auszuschließen. Die Übermittlung erfolgt auf Grundlage von Art. 49 Abs. 1 lit. b DSGVO, da sie zur Durchführung der von dir angefragten vorvertraglichen Maßnahme (Angebotserstellung) erforderlich ist. Weitere Informationen zur Datenverarbeitung durch FormSubmit findest du unter <a href="https://formsubmit.co/privacy" target="_blank" rel="noopener">formsubmit.co/privacy</a>.</p>
+
+      <h3>5. Kontaktaufnahme per E-Mail, Telefon oder WhatsApp</h3>
+      <p>Wenn du uns per E-Mail, telefonisch oder über WhatsApp kontaktierst, verarbeiten wir deine Angaben zur Bearbeitung deines Anliegens. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Bei der Nutzung von WhatsApp (WhatsApp Ireland Ltd., Meta-Gruppe) können Daten auch in die USA übermittelt werden; auf diese Verarbeitung haben wir keinen Einfluss. Wenn du das vermeiden möchtest, kontaktiere uns bitte per E-Mail oder Telefon.</p>
+
+      <h3>6. Speicherdauer</h3>
+      <p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die Auftragsabwicklung erforderlich ist, maximal jedoch 3 Jahre nach Abschluss des Auftrags.</p>
+
+      <h3>7. Cookies</h3>
+      <p>Diese Website verwendet keine Cookies, kein Tracking und keine Analyse-Dienste.</p>
+
+      <h3>8. Deine Rechte</h3>
+      <p>Du hast gemäß DSGVO das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Kontakt: <strong>info@gartenservice-schaefer.de</strong></p>
+
+      <h3>9. Beschwerderecht</h3>
+      <p>Zuständig ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit (HBDI), Postfach 3163, 65021 Wiesbaden, <a href="https://www.datenschutz.hessen.de" target="_blank" rel="noopener">www.datenschutz.hessen.de</a>.</p>
+
+      <h3>10. Aktualität</h3>
+      <p>Stand: Juni 2026.</p>
+    </div>
   </main>
-  <footer><div class="foot-inner">
-    <span>© 2026 Gartenservice Schäfer · Haiger</span>
-    <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span>
-  </div></footer>
+
+  <footer>
+    <div class="foot-inner">
+      <span>© 2026 Gartenservice Schäfer · Haiger</span>
+      <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </footer>
 </body>
 </html>

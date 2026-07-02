@@ -43,7 +43,7 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;scroll-padding-top:88px;}
   body{
     margin:0;
     background:var(--paper);
@@ -303,6 +303,11 @@
 </style>
 </head>
 <body>
+<script>
+  // Immer oben starten (verhindert, dass Mobile-Browser zur zweiten Sektion springen)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('pageshow', function(){ if(!location.hash) window.scrollTo(0, 0); });
+</script>
 
 <!-- ============ HEADER ============ -->
 <header>
@@ -361,7 +366,6 @@
     </div>
 
     <div class="frame hero-visual">
-      <span class="ph-tag">Foto: gepflegter Garten (hier einfügen)</span>
       <!-- Fallback botanical scene shown until a real photo is dropped in -->
       <svg class="ph" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
@@ -531,7 +535,6 @@
   <div class="wrap about">
     <div class="about-photo reveal">
       <div class="frame">
-        <span class="ph-tag">Foto: unser Team (hier einfügen)</span>
         <svg class="ph" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <rect width="400" height="500" fill="#DCE7D3"/>
           <path d="M0 320 Q120 280 240 315 T400 300 V500 H0 Z" fill="#6E9A5E"/>
